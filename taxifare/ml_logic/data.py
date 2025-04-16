@@ -57,7 +57,8 @@ def get_data_with_cache(
         query_job = client.query(query)
         result = query_job.result()
         df = result.to_dataframe()
-
+        print(f"✅ Data loaded from BigQuery, with shape {df.shape}")
+    
         # Store as CSV if the BQ query returned at least one valid line
         if df.shape[0] > 1:
             df.to_csv(cache_path, header=data_has_header, index=False)
@@ -86,7 +87,7 @@ def load_data_to_bq(
 
     # 🎯 HINT for "*** TypeError: expected bytes, int found":
     # After preprocessing the data, your original column names are gone (print it to check),
-    # so ensure that your column names are *strings* that start with either 
+    # so ensure that your column names are *strings* that start with either
     # a *letter* or an *underscore*, as BQ does not accept anything else
 
     # TODO: simplify this solution if possible, but students may very well choose another way to do it

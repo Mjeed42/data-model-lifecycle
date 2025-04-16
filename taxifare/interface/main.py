@@ -105,12 +105,20 @@ def train(
     """
 
     data_processed_cache_path = Path(LOCAL_DATA_PATH).joinpath("processed", f"processed_{min_date}_{max_date}_{DATA_SIZE}.csv")
+
     data_processed = get_data_with_cache(
         gcp_project=GCP_PROJECT,
         query=query,
         cache_path=data_processed_cache_path,
-        data_has_header=False
+        data_has_header=True
     )
+
+ ####   def get_data_with_cache(
+ ####       gcp_project:str,
+ ####       query:str,
+ ####       cache_path:Path,
+ ####       data_has_header=True
+ ####   ) -> pd.DataFrame:
 
     if data_processed.shape[0] < 10:
         print("❌ Not enough processed data retrieved to train on")
@@ -157,7 +165,8 @@ def train(
     save_model(model=model)
 
     # The latest model should be moved to staging
-    pass  # YOUR CODE HERE
+    # YOUR CODE HERE
+    mlflow_transition_model(current_stage="", new_stage="Staging")
 
     print("✅ train() done \n")
 
