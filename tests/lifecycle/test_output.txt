@@ -14,26 +14,7 @@ tests/lifecycle/test_mlflow.py::TestMlflow::test_mlflow_model_exists PASSED [ 50
 tests/lifecycle/test_mlflow.py::TestMlflow::test_mlflow_model_in_production PASSED [ 60%]
 tests/lifecycle/test_prefect.py::TestPrefect::test_prefect_flow_name_is_not_null PASSED [ 70%]
 tests/lifecycle/test_prefect.py::TestPrefect::test_prefect_log_level_is_warning PASSED [ 80%]
-tests/lifecycle/test_prefect.py::TestPrefect::test_prefect_tasks FAILED  [ 90%]
+tests/lifecycle/test_prefect.py::TestPrefect::test_prefect_tasks PASSED  [ 90%]
 tests/lifecycle/test_prefect.py::TestPrefect::test_prefect_flow PASSED   [100%]
 
-=================================== FAILURES ===================================
-________________________ TestPrefect.test_prefect_tasks ________________________
-
-self = <tests.lifecycle.test_prefect.TestPrefect object at 0x7f682ecc9060>
-
-    def test_prefect_tasks(self):
-        """
-        verify that the all the prefect tasks are created
-        """
-        assert preprocess_new_data.name == 'preprocess_new_data', "preprocess_new_data task is not defined"
-        assert evaluate_production_model.name == 'evaluate_production_model', "evaluate_production_model task is not defined"
-        assert re_train.name == 're_train', "re_train task is not defined"
-        assert transition_model.name == 'transition_model', "transition_model task is not defined"
->       assert notify.name == 'notify', "notify task is not defined"
-E       AttributeError: 'function' object has no attribute 'name'
-
-tests/lifecycle/test_prefect.py:34: AttributeError
-=========================== short test summary info ============================
-FAILED tests/lifecycle/test_prefect.py::TestPrefect::test_prefect_tasks - Att...
-=================== 1 failed, 9 passed, 4 warnings in 5.06s ====================
+======================== 10 passed, 4 warnings in 8.34s ========================
