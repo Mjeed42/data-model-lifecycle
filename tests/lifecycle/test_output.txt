@@ -20,7 +20,7 @@ tests/lifecycle/test_prefect.py::TestPrefect::test_prefect_flow PASSED   [100%]
 =================================== FAILURES ===================================
 ________________________ TestPrefect.test_prefect_tasks ________________________
 
-self = <tests.lifecycle.test_prefect.TestPrefect object at 0x7f4bf2ee5060>
+self = <tests.lifecycle.test_prefect.TestPrefect object at 0x7f1e04a3d0c0>
 
     def test_prefect_tasks(self):
         """
@@ -31,9 +31,9 @@ self = <tests.lifecycle.test_prefect.TestPrefect object at 0x7f4bf2ee5060>
         assert re_train.name == 're_train', "re_train task is not defined"
         assert transition_model.name == 'transition_model', "transition_model task is not defined"
 >       assert notify.name == 'notify', "notify task is not defined"
-E       NameError: name 'notify' is not defined
+E       AttributeError: 'function' object has no attribute 'name'
 
-tests/lifecycle/test_prefect.py:34: NameError
+tests/lifecycle/test_prefect.py:34: AttributeError
 =========================== short test summary info ============================
-FAILED tests/lifecycle/test_prefect.py::TestPrefect::test_prefect_tasks - Nam...
-=================== 1 failed, 9 passed, 4 warnings in 5.86s ====================
+FAILED tests/lifecycle/test_prefect.py::TestPrefect::test_prefect_tasks - Att...
+=================== 1 failed, 9 passed, 4 warnings in 6.06s ====================
